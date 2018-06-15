@@ -1,11 +1,11 @@
 {
     "name": "${environmentName}",
-    "description": "MediaWiki Standalone",
-    "version": "0.0.1",
-    "author": "https://github.com/lbthomsen",
+    "description": "Grafana",
+    "version": "5.3.1",
+    "author": "https://github.com/niclash",
     "containers": [
         {
-            "hostname": "${webContainerName}",
+            "hostname": "${domainName}",
             "template": "debian-stretch",
             "peer-criteria": "HTTP-GROUP",
             "size": "${containerSize}",
@@ -13,7 +13,7 @@
                 {
                     "protocol": "http",
                     "domain": "${domainName}",
-                    "internal-port": "80",
+                    "internal-port": "3000",
                     "external-port": "80"
                 }
             ]
@@ -22,7 +22,7 @@
     "peer-criteria": [
         {
             "name": "HTTP-GROUP",
-            "max-price": "25"
+            "max-price": "100"
         }
     ],
     "ansible-configuration": {
@@ -43,7 +43,7 @@
         "environmentName": {
             "description": "Enter the environment name",
             "type": "string",
-            "default": "wp",
+            "default": "grafana",
             "validation": "[a-zA-Z0-9]+"
         },
         "domainName": {
