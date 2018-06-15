@@ -29,6 +29,10 @@
         "source-url": "https://github.com/niclash/subutai-grafana/archive/master.zip",
         "ansible-playbook": "ansible.yml",
         "extra-vars": [
+            {
+                "key" : "database",
+                "value" : "${database}"
+            }
         ],
         "groups": [
             {
@@ -41,10 +45,10 @@
     },
     "user-variables": {
         "database": {
-            "description": ".",
+            "description": "Database to be used for Grafana storage. This is not the datasources, but internal data needed in Grafana, such as panels, user settings and more.",
             "type": "enum",
-            "default": "MEDIUM",
-            "validation": "TINY,SMALL,MEDIUM,LARGE,HUGE"
+            "default": "SQLite",
+            "validation": "SQLite"
         },
         "environmentName": {
             "description": "Enter the environment name",
