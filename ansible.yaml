@@ -1,0 +1,28 @@
+---
+
+- hosts: all
+  gather_facts: false
+  remote_user: root
+  tasks: 
+
+    - name: Update
+      raw: apt-get -y --allow-unauthenticated update || true
+
+    - name: Ensure python is available
+      raw: test -e /usr/bin/python || apt install -y --allow-unauthenticated python-minimal
+
+    - name: Ensure python-apt is available
+      raw: test -d /usr/share/python-apt || apt install -y --allow-unauthenticated python-apt
+
+    - name: Upgrade
+      raw: apt-get -y --allow-unauthenticated upgrade
+
+- hosts: mw
+  remote_user: root
+  tasks: 
+
+    - name: Install Grafana packages
+      apt:
+        deb: https://s3-us-west-2.amazonaws.com/grafana-releases/release/grafana_5.1.3_amd64.deb
+
+
