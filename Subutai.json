@@ -41,7 +41,7 @@
     },
     "user-variables": {
         "database": {
-            "description": "Database to be used for Grafana's own storage. This is not the datasources, but internal data needed in Grafana, such as panels, user settings and more.",
+            "description": "Database to be used for Grafana storage. This is not the datasources, but internal data needed in Grafana, such as panels, user settings and more.",
             "type": "enum",
             "default": "MEDIUM",
             "validation": "TINY,SMALL,MEDIUM,LARGE,HUGE"
